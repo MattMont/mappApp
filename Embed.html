@@ -13,10 +13,12 @@
     <style>
      	#map {
         	position: relative;
+        	height: 100%;
+        	width: 100%;
       	}
 
-      	.popup{
-    		max-width: 100%;
+      	.popover{
+    		min-width: 280px;
 		}*/
     </style>
   	</head>
@@ -144,7 +146,7 @@
  		style: styleFunction
   	});
 
-
+  	
   	var map = new ol.Map({
     	layers: [
     		new ol.layer.Tile({
@@ -163,9 +165,10 @@
     		labels
     	],
     	target:  document.getElementById('map'),
+    	//Would like to change this to be automatic
     	view: new ol.View({
-      		center: [0, 0],
-      		zoom: 3
+    		center: ol.proj.transform([28.32, 34.2], 'EPSG:4326', 'EPSG:3857'),
+    		zoom: 6
     	})
  	 });
 
@@ -215,7 +218,6 @@
         map.getTarget().style.cursor = hit ? 'pointer' : '';
       });
 
-      
       
     </script>
   </body>
