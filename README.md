@@ -21,7 +21,7 @@ var locations = new ol.layer.Vector({
  To change the tiles that are used for the map background, the source option within the map variable must be changed to match the proper url
  from the tile host server.
  
- The AWMC ancient map tiles are selected as follows:
+ The AWMC Base map tiles are selected as follows:
 ```javascript
  var map = new ol.Map({
     	layers: [
@@ -36,8 +36,25 @@ var locations = new ol.layer.Vector({
               ],
               crossOrigin: 'anonymous'
             })
-  ```          
-   While the standard OSM tiles can be used as follows:
+  ``` 
+  
+   Thw AMWC Coastal outline map is used by changing the urls as follows:
+```javascript
+     var map = new ol.Map({
+    	layers: [
+    		new ol.layer.Tile({
+        		 source: new ol.source.XYZ({
+              urls:
+              [
+                "http://a.tiles.mapbox.com/v3/isawnyu.eoupu8fr/{z}/{x}/{y}.png",
+                "http://b.tiles.mapbox.com/v3/isawnyu.eoupu8fr/{z}/{x}/{y}.png",
+                "http://c.tiles.mapbox.com/v3/isawnyu.eoupu8fr/{z}/{x}/{y}.png",
+                "http://d.tiles.mapbox.com/v3/isawnyu.eoupu8fr/{z}/{x}/{y}.png"
+              ],
+              crossOrigin: 'anonymous'
+            })
+```
+   The standard OSM tiles can be used as follows:
 ```javascript
    var map = new ol.Map({
     	layers: [
