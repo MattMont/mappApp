@@ -1,39 +1,4 @@
-
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>Map App</title>
-    <link rel="stylesheet" href="https://openlayers.org/en/v4.4.2/css/ol.css" type="text/css">
-    <!-- The line below is only needed for old environments like Internet Explorer and Android 4.x -->
-    <script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=requestAnimationFrame,Element.prototype.classList,URL"></script>
-    <script src="https://openlayers.org/en/v4.4.2/build/ol.js"></script>
-    <script src="https://code.jquery.com/jquery-2.2.3.min.js"></script>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-    <style>
-     	#map {
-        	position: relative;
-        	height: 100%;
-        	width: 100%;
-      	}
-
-      	.popover{
-    		min-width: 280px;
-		}
-
-		.olImageLoadError { 
- 			/* when OL encounters a 404, don't display the pink image */
- 			display: none !important;
-		}
-    </style>
-  	</head>
-  	<body>
-    <div id="map" class="map"><div id="popup"></div></div>
-    <script>
-
-    	/* Based off of https://openlayers.org/en/latest/examples/geojson.html*/
-    	
-    styles = {
+var styles = {
         'Point': new ol.style.Style({
           	image: new ol.style.Circle({
             	fill: new ol.style.Fill({
@@ -120,10 +85,10 @@
       	return new ol.style.Style({
         		text: new ol.style.Text({
         			text: feature.get('la_name'),
-        			font:'16px Arial',
+        			font:'12px Arial',
         			fill: new ol.style.Fill({color: 'black'}),
-  				stroke: new ol.style.Stroke({color: 'white', width: 5}),
-  				offsetX: 10,
+  				stroke: new ol.style.Stroke({color: 'white', width: 3}),
+  				offsetX: 30,
   				offsetY: 15
         		})
       	});
@@ -188,10 +153,10 @@
         		 source: new ol.source.XYZ({
               urls:
               [
-                "http://a.tiles.mapbox.com/v3/isawnyu.eoupu8fr/{z}/{x}/{y}.png",
-                "http://b.tiles.mapbox.com/v3/isawnyu.eoupu8fr/{z}/{x}/{y}.png",
-                "http://c.tiles.mapbox.com/v3/isawnyu.eoupu8fr/{z}/{x}/{y}.png",
-                "http://d.tiles.mapbox.com/v3/isawnyu.eoupu8fr/{z}/{x}/{y}.png"
+                "http://a.tiles.mapbox.com/v3/isawnyu.map-knmctlkh/{z}/{x}/{y}.png",
+                "http://b.tiles.mapbox.com/v3/isawnyu.map-knmctlkh/{z}/{x}/{y}.png",
+                "http://c.tiles.mapbox.com/v3/isawnyu.map-knmctlkh/{z}/{x}/{y}.png",
+                "http://d.tiles.mapbox.com/v3/isawnyu.map-knmctlkh/{z}/{x}/{y}.png"
               ],
               crossOrigin: 'anonymous'
             })
@@ -257,7 +222,3 @@
         extent = locations.getSource().getExtent();
         map.getView().fit(extent, {size: map.getSize(), padding:[10,0,10,0]});
       });
-      
-    </script>
-  </body>
-</html>

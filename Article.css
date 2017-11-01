@@ -1,0 +1,20 @@
+		#map {
+        	position: relative;
+        	height: 350px;
+        	width: 700px;
+        	padding-left: 20px;
+        	
+      	}
+
+      	.ol-viewport{
+      		border: solid #000;
+			border-width: 1px;
+      	}
+      	.popover{
+    		min-width: 280px;
+		}
+
+		.olImageLoadError { 
+ 			/* when OL encounters a 404, don't display the pink image */
+ 			display: none !important;
+		}
