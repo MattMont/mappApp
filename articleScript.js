@@ -5,8 +5,12 @@ var styles = {
               		color: 'black'
             	}),
             	radius: 3,
-         	})
-        }),
+              stroke: new ol.style.Stroke({
+                  color: 'white',
+                  width: 1.5
+         	    })
+            })
+          }),
         'LineString': new ol.style.Style({
           stroke: new ol.style.Stroke({
             color: 'black',
@@ -81,10 +85,10 @@ var styles = {
     	
 
   	function labelStyleFunction(feature, resolution) {
-      if (feature.get('la_name') != 'None'){
+      if (feature.get('basename') != 'None'){
       	return new ol.style.Style({
         		text: new ol.style.Text({
-        			text: feature.get('la_name'),
+        			text: feature.get('basename'),
         			font:'12px Arial',
         			fill: new ol.style.Fill({color: 'black'}),
   				stroke: new ol.style.Stroke({color: 'white', width: 3}),
@@ -97,7 +101,7 @@ var styles = {
 
   	var labels = new ol.layer.Vector({
     	source: new ol.source.Vector({
-      		url: 'kmlconv.geojson',
+      		url: 'nestor.geojson',
       		format: new ol.format.GeoJSON()
     	}),
     	style: labelStyleFunction
@@ -119,18 +123,25 @@ var styles = {
         geometry.forEachSegment(function(start, end) {
           var dx = end[0] - start[0];
           var dy = end[1] - start[1];
+          var len =Math.sqrt(Math.pow(dx,2) + Math.pow(dy,2)); 
           var rotation = Math.atan2(dy, dx);
+          var xAve = (start[0] + end[0])/2;
+          var yAve = (start[1] + end[1])/2;
+          mid = [xAve,yAve];
+        
           // arrows
-          lineStyles.push(new ol.style.Style({
-            geometry: new ol.geom.Point(end),
-            image: new ol.style.Icon({
-              src: 'arrow.png',
-              anchor: [0.75, 0.5],
-              rotateWithView: true,
-              rotation: -rotation,
-              scale: 0.65
-            })
-          }));
+          if(len > 150000){ //only longer lines get arrows
+            lineStyles.push(new ol.style.Style({
+              geometry: new ol.geom.Point(mid),
+              image: new ol.style.Icon({
+                src: 'arrow.png',
+                anchor: [0.75, 0.5],
+                rotateWithView: true,
+                rotation: -rotation,
+                scale: 0.65
+              })
+            }));
+          };
         });
         return lineStyles;
       } else {
@@ -140,12 +151,11 @@ var styles = {
 
   	var locations = new ol.layer.Vector({
       	source: new ol.source.Vector({
-        	url: 'kmlconv.geojson',
+        	url: 'nestor.geojson',
         	format: new ol.format.GeoJSON(),
-   		}),
- 		style: styleFunction
+   		   }),
+ 		     style: styleFunction
   	});
-
   	
   	var map = new ol.Map({
     	layers: [
