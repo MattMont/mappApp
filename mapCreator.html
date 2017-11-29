@@ -10,7 +10,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" type="text/css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/1.3.3/FileSaver.min.js"></script>
+  
     <style>
       .map {
         position: absolute;
@@ -59,18 +59,44 @@
         font-family: Arial, sans-serif;
         font-size: 15px;
       }
+
+      .initHide { display: none; }
     
-      .buttons .ol-control button.active {
-        background-color: rgba(234,129,8,1);
+      .createButtons{
+        padding: 10px;
+        border-style: inset;
       }
 
-      .buttons .ol-control button.active:hover {
-        background-color: rgba(234,129,8,1);
+      .input{
+        margin:10px;
       }
 
-      .buttons .ol-addpoint button {
-        background-image: url(./res/button_draw.png);
+      .btn-input{
+        margin-top: 10px;
       }
+
+      .ol-layer-switcher {
+        bottom: 0.5em; left: 0.5em; 
+      }
+
+      .ol-layer-switcher ul {
+        background-color: rgba(0,60,136,0.5);
+        border: none; border-radius: 2px; color: #fff;
+        margin: 0; padding: 0; list-style: none; font-size: 0.9em; 
+      }
+
+      .ol-layer-switcher li {
+        display: block; padding: 8px; }
+
+
+      .ol-layer-switcher li:hover {
+        background: #7b98bc; cursor: pointer; 
+      }
+
+      .ol-layer-switcher .active {
+        background: #7b98bc; 
+      }
+
     </style>
   </head>
   <body>
@@ -79,8 +105,34 @@
     <div class="sidebar">
       <ul  class="controls">
         <li>
+          <button id="modFeatButton" class="btn btn-primary btn-block"> Select and Modify Feature</button>
+        </li>
+        <li>
+          <button id="drawFeatButton" class="btn btn-primary btn-block"> Draw Feature</button>
+        </li>
+        <li>
+          <button id="createFeatButton" class="btn btn-primary btn-block"> Create Feature by Coord</button>
+        </li>
+        <li>
+          <button id="createLabelButton" class="btn btn-primary btn-block"> Create Label</button>
+        </li>
+        <li>
+          <button id="createIconButton" class="btn btn-primary btn-block"> Create Icon</button>
+        </li>
+        <li>
+          <button id="editFeatButton" class="btn btn-primary btn-block"> Edit Features</button>
+        </li>
+        <li>
+          <button id="exportButton" class="btn btn-primary btn-block"> Export Map Layers</button>
+        </li>
+      </ul>
+      <div class="createButtons">
+        <div id="modDiv" class="initHide input">
+          <p>Click to select feature and drag to modify.</p>
+        </div>
+        <div id="drawDiv" class="initHide input">
           <form class="form-inline">
-            <label>Geometry type</label>
+            <label>Geometry type</label><br>
               <select id="type">
                 <option value="None">None</option>
                 <option value="Point">Point</option>
@@ -89,60 +141,62 @@
               </select>
             </label>
           </form>
-        </li>
-        <li>
-           Lat:<input type="text" name="latitude" id="lat"><br>
-           Long:<input type="text" name="longitude" id="long"><br>
-            <button id="create" class="btn btn-default">Create Feature</button>
-        </li>
-        <li>
+        </div>
+        <div id="createDiv" class="initHide input">
+           Lat:<br><input type="text" name="latitude" id="lat"><br>
+           Long:<br><input type="text" name="longitude" id="long"><br>
+            <button id="create" class="btn btn-input btn-default ">Create Feature</button>
+        </div>
+        <div id="labelDiv" class="initHide input">
            Label Text:<input type="text" name="labelText" id="lab"><br>
-            <button id="createLabel" class="btn btn-default">Create Label </button>
-        </li>
-        <li>
+            <button id="createLabel" class="btn btn-input btn-default ">Create Label </button>
+        </div>
+        <div id="iconDiv" class="initHide input">
           <form class="form-inline">
             <label>Icon</label><br>
               <select id="icon">
                 <option value="">None</option>
-                <option value="test">Test</option>
-                <option value="test2">Test2</option>
+                <option value="anchor">Anchor</option>
+                <option value="battle">Battle</option>
+                <option value="boat">Boat</option>
+                <option value="marker">Marker</option>
+                <option value="sacrifice">Sacrifice</option>
+                <option value="settlement">Settlement</option>
+                <option value="storm">Storm</option>
+                <option value="wind">Wind</option>
               </select>
             </label>
           </form>
-          <button id="createIcon" class="btn btn-default">Create Icon </button>
-        </li>
-        <li>
-          <button id="delete" class="btn btn-default">Delete Feature</button>
-        </li>
-        <li>
-          <button id="edit" class="btn btn-default" data-target="#edit-modal" data-toggle="modal">Edit GeoJSON String</button> 
-        </li>
-        <li>
-          <button id="save" class="btn btn-default">Save GeoJSON</button> 
-        </li>
-        <li>
-          <a id="export-png" class="btn btn-default"><i class="fa fa-download"></i> Download PNG</a>
-        </li>
-      </ul>
-    </div>
-   
-    <div id="edit-modal" class="modal fade" role="dialog">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal">&times;</button>
-            <h4 class="modal-title">Edit GeoJSON</h4>
-          </div>
-          <div class="modal-body">
-            <textarea id="js-textarea"></textarea>
-            
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-default" id="edit-save">Save File</button>
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-          </div>
+          <button id="createIcon" class="btn btn-default btn-input">Create Icon </button>
+        </div>
+        <div id="editDiv" class="initHide input">
+          <button id="delete" class="btn btn-input btn-default ">Delete Feature</button>
+          <button id="edit" class="btn btn-default btn-input" data-target="#edit-modal" data-toggle="modal">Edit GeoJSON String</button> 
+        </div>
+        <div id="exportDiv" class="initHide input">
+          <button id="save" class="btn btn-input btn-default ">Save GeoJSON</button>
+          <a id="export-png" class="btn btn-input btn-default "><i class="fa fa-download"></i> Download PNG</a>
         </div>
       </div>
+    </div>
+   
+  <div id="edit-modal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Edit GeoJSON</h4>
+        </div>
+        <div class="modal-body">
+          <textarea id="js-textarea"></textarea>
+          
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" id="edit-save">Save File</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
     </div>
     <script>
 
@@ -169,7 +223,7 @@
         }),
         'MultiLineString': new ol.style.Style({
           stroke: new ol.style.Stroke({
-            color: 'green',
+            color: 'black',
             width: 1
           })
         }),
@@ -258,7 +312,7 @@
             lineStyles.push(new ol.style.Style({
               geometry: new ol.geom.Point(mid),
               image: new ol.style.Icon({
-                src: 'arrow.png',
+                src: './res/arrow.png',
                 anchor: [0.75, 0.5],
                 rotateWithView: true,
                 rotation: -rotation,
@@ -335,13 +389,14 @@
             })
       });
 
+      var initCoord = new ol.proj.fromLonLat([20, 34]);
       var map = new ol.Map({
         layers: [ raster, vector, iconVector, labelVector],
         target: 'map',
         view: new ol.View({
           projection: 'EPSG:3857',
-          center: [-32, 20],
-          zoom: 3
+          center: initCoord,
+          zoom: 4
         })
       });
 
@@ -391,7 +446,6 @@
             select_interaction.getFeatures().on('add', function (event) {
               var properties = event.element.getProperties();
               selectedFeatureID = properties.id;
-       
             });
              
 
@@ -497,6 +551,27 @@
         }
       };
   
+      $("#modFeatButton").click(function(){
+        resetType();
+        select_interaction = new ol.interaction.Select({
+              wrapX: false,
+              hitTolerance: 10
+            });
+            map.addInteraction(select_interaction);
+
+            select_interaction.getFeatures().on('add', function (event) {
+              var properties = event.element.getProperties();
+              selectedFeatureID = properties.id;
+            });
+             
+
+            modify = new ol.interaction.Modify({
+              features: select_interaction.getFeatures()
+            });
+
+            map.addInteraction(modify);
+      });
+
       //must validate
       $("#createLabel").click(function() {
         var name = document.getElementById('lab').value;
@@ -613,6 +688,56 @@
         
         document.getElementById('lat').value = '';
         document.getElementById('long').value = '';
+      });
+
+      var toggleTime = 250;
+      $(document).ready(function(){
+        $("#modFeatButton").click(function(){
+          $("div.initHide").hide(toggleTime);
+          $("#modDiv").toggle(toggleTime);
+        });
+      });
+
+      $(document).ready(function(){
+        $("#drawFeatButton").click(function(){
+          $("div.initHide").hide(toggleTime);
+          $("#drawDiv").toggle(toggleTime);
+        });
+      });
+
+      $(document).ready(function(){
+        $("#createFeatButton").click(function(){
+          $("div.initHide").hide(toggleTime);
+          $("#createDiv").toggle(toggleTime);
+        });
+      });
+
+      $(document).ready(function(){
+        $("#createLabelButton").click(function(){
+          $("div.initHide").hide(toggleTime);
+          $("#labelDiv").toggle(toggleTime);
+        });
+      });
+
+      $(document).ready(function(){
+        $("#createIconButton").click(function(){
+          $("div.initHide").hide(toggleTime);
+          $("#iconDiv").toggle(toggleTime);
+        });
+      });
+
+      $(document).ready(function(){
+        $("#editFeatButton").click(function(){
+          $("div.initHide").hide(toggleTime);
+          $("#editDiv").toggle(toggleTime);
+        });
+      });
+
+      $(document).ready(function(){
+        $("#exportButton").click(function(){
+          $("div.initHide").hide(toggleTime);
+          $("#exportDiv").toggle(toggleTime);
+        });
       });
 
     </script>
