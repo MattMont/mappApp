@@ -36,7 +36,7 @@ of the app being used to view the pictures
 The template is created to work with the base, label, and icon layers exported by the Map creator, which will be saved in the same 
 directory as webMap.js and webMap.css.
 
-To use the the template, the .html page must inlcude all of the required script and link tags
+To use the the template, the .html page must inlcude all of the required script and link tags in the header.
 ```
 <link rel="stylesheet" href="https://openlayers.org/en/v4.4.2/css/ol.css" type="text/css">
 	    <script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=requestAnimationFrame,Element.prototype.classList,URL"></script>
@@ -47,19 +47,13 @@ To use the the template, the .html page must inlcude all of the required script 
 	    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" type="text/css">
 	    <script src="https://cdn.rawgit.com/walkermatt/ol3-layerswitcher/6e4cc8c9/src/ol3-layerswitcher.js"></script>
 	    <link rel="stylesheet" href="https://cdn.rawgit.com/walkermatt/ol3-layerswitcher/6e4cc8c9/src/ol3-layerswitcher.css" type="text/css">
-		<link rel="stylesheet" type="text/css" href="webMap.css">
+	    <link rel="stylesheet" type="text/css" href="webMap.css">
+	    <script src="webMap.js"></script>
 ```
-
-
-### Adding Geojson file
-To change the Geojson file being pulled from, the url option of the locations variable must be changed to match the file name.
-```javascript
-var locations = new ol.layer.Vector({
-      	source: new ol.source.Vector({
-        	url: 'kmlconv.geojson',
-        	format: new ol.format.GeoJSON(),
-   		}),
- ```
+There will also need to be a div for the map placed in the page where it is wanted.
+```
+<div id="map" class="map"></div><div id="popup"></div>
+```
  
  ### Changing map tile source
  To change the tiles that are used for the map background, the source option within the map variable must be changed to match the proper 
@@ -127,3 +121,4 @@ var locations = new ol.layer.Vector({
    https://leaflet-extras.github.io/leaflet-providers/preview/
    
    Please not that some of these tiles require payment before they can be used.
+
