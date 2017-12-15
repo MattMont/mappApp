@@ -1,0 +1,499 @@
+{
+    "type": "FeatureCollection",
+    "features": [
+        {
+            "type": "Feature",
+            "properties": {
+                "basename": "Tenedos",
+                "custom_name": "",
+                "en_name": "Tenedos",
+                "gr_name": "",
+                "la_name": "Tenedos",
+                "featuretyp": "settlement",
+                "pid": "550911",
+                "timeperiod": "ACHR",
+                "perseus_li": null,
+                "wiki_link": null,
+                "magnitude": 1
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    26.0497905,
+                    39.8278355
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "basename": "Lesbos (island)",
+                "custom_name": "",
+                "en_name": "Lesbos",
+                "gr_name": "Λέσβος",
+                "la_name": "Lesbos",
+                "featuretyp": "island",
+                "pid": "550696",
+                "timeperiod": "M",
+                "perseus_li": null,
+                "wiki_link": null,
+                "magnitude": 1
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    26.1342123,
+                    39.2074811
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "basename": "Geraistos Pr.",
+                "custom_name": "",
+                "en_name": "Geraistos Pr.",
+                "gr_name": "",
+                "la_name": "Geraistos Pr.",
+                "featuretyp": "cape",
+                "pid": "570259",
+                "timeperiod": "M",
+                "perseus_li": null,
+                "wiki_link": null,
+                "magnitude": 1
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    24.4838493,
+                    37.9541244
+                ]
+            },
+            "id": 1
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "basename": "Sounion Pr.",
+                "custom_name": "",
+                "en_name": "Sounion Pr.",
+                "gr_name": "Σούνιον",
+                "la_name": "Sounion Pr.",
+                "featuretyp": "cape",
+                "pid": "580108",
+                "timeperiod": "",
+                "perseus_li": null,
+                "wiki_link": null,
+                "magnitude": 1
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    24.125,
+                    37.625
+                ]
+            },
+            "id": 2
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "basename": "Sparta",
+                "custom_name": "",
+                "en_name": "Sparta",
+                "gr_name": "Λακεδαίμων",
+                "la_name": "Sparta",
+                "featuretyp": "settlement, temple, theatre",
+                "pid": "570685",
+                "timeperiod": "MACHR",
+                "perseus_li": null,
+                "wiki_link": null,
+                "magnitude": 1
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    22.4295575,
+                    37.0827165
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "basename": "Malea Pr.",
+                "custom_name": "",
+                "en_name": "Malea Pr.",
+                "gr_name": "Μαλέα",
+                "la_name": "Malea Pr.",
+                "featuretyp": "cape",
+                "pid": "570455",
+                "timeperiod": "",
+                "perseus_li": null,
+                "wiki_link": null,
+                "magnitude": 1
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    23.25,
+                    36.25
+                ]
+            },
+            "id": 3
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "basename": "Phaistos",
+                "custom_name": "",
+                "en_name": "Phaistos",
+                "gr_name": "",
+                "la_name": "Phaistos",
+                "featuretyp": "settlement, architecturalcomplex",
+                "pid": "589987",
+                "timeperiod": "4M2LACHRL",
+                "perseus_li": null,
+                "wiki_link": null,
+                "magnitude": 1
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    24.8141725,
+                    35.0511785
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "basename": "Gortyn(a)",
+                "custom_name": "",
+                "en_name": "Larissa",
+                "gr_name": "Γόρτυνα",
+                "la_name": "Larissa",
+                "featuretyp": "urban, theatre, church, settlement, architecturalcomplex",
+                "pid": "589796",
+                "timeperiod": "ARL",
+                "perseus_li": null,
+                "wiki_link": null,
+                "magnitude": 1
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    24.9469437222,
+                    35.0627201667
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "basename": "Libya",
+                "custom_name": "",
+                "en_name": "Libya",
+                "gr_name": "Λιβύη",
+                "la_name": "Libya",
+                "featuretyp": "region",
+                "pid": "716588",
+                "timeperiod": "R",
+                "perseus_li": null,
+                "wiki_link": null,
+                "magnitude": 1
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    26.5,
+                    31.5
+                ]
+            },
+            "id": 4
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "basename": "Pharos",
+                "custom_name": "",
+                "en_name": "Pharos",
+                "gr_name": "",
+                "la_name": "Pharos",
+                "featuretyp": "lighthouse",
+                "pid": "727197",
+                "timeperiod": "HRL",
+                "perseus_li": null,
+                "wiki_link": null,
+                "magnitude": 1
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    29.885661,
+                    31.213931
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "basename": "Tyrus/Col. Septimia Severa",
+                "custom_name": "",
+                "en_name": "Tyre",
+                "gr_name": "Τύρος",
+                "la_name": "Tyrus",
+                "featuretyp": "settlement, circus",
+                "pid": "678437",
+                "timeperiod": "2E1INCAAHHHRRRRRTLLPCACCIOELM",
+                "perseus_li": null,
+                "wiki_link": null,
+                "magnitude": 1
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    35.209358,
+                    33.268071
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "basename": "(Palai)Paphos",
+                "custom_name": "",
+                "en_name": "Paphos",
+                "gr_name": "",
+                "la_name": "Paphos",
+                "featuretyp": "settlement",
+                "pid": "707596",
+                "timeperiod": "ACHRL",
+                "perseus_li": null,
+                "wiki_link": null,
+                "magnitude": 1
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    32.573711,
+                    34.707147
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "basename": "Amathous",
+                "custom_name": "",
+                "en_name": "Qarth.adaÃ¢ÂÂ¼ÃÂ­t",
+                "gr_name": "",
+                "la_name": "Amathous",
+                "featuretyp": "settlement, cemetery, port",
+                "pid": "707462",
+                "timeperiod": "ACHRL",
+                "perseus_li": null,
+                "wiki_link": null,
+                "magnitude": 1
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    33.1438299,
+                    34.712174
+                ]
+            }
+        
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "en_name": "Egypt",
+                "featuretyp": "unknown",
+                "pid": "-1509779647349",
+                "gr_name": "",
+                "la_name": "Egypt",
+                "timeperiod": "ACHRL(*****)",
+                "greek_map": 1,
+                "perseus_li": "",
+                "wiki_link": "",
+                "basename": "Egypt",
+                "custom_name": "Egypt"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    31.11225382044,
+                    31.568338744177
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "basename": "Byblos",
+                "custom_name": "",
+                "en_name": "Byblos",
+                "gr_name": "",
+                "la_name": "Byblos",
+                "featuretyp": "settlement, port",
+                "pid": "668216",
+                "timeperiod": "P2EINCAHHRRRTLLCAMCC1ILMP",
+                "perseus_li": null,
+                "wiki_link": null,
+                "magnitude": 1
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    35.645732,
+                    34.119026
+                ]
+            }
+
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "basename": "Ilium/Troia",
+                "custom_name": "",
+                "en_name": "Troia",
+                "gr_name": "",
+                "la_name": "Troia",
+                "featuretyp": "settlement",
+                "pid": "550595",
+                "timeperiod": "2ACHHRLM",
+                "perseus_li": null,
+                "wiki_link": null,
+                "magnitude": 1
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    26.238889,
+                    39.9575
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "basename": "Sidon/Col. Aurelia Pia",
+                "custom_name": "",
+                "en_name": "Sidon",
+                "gr_name": "Σιδών",
+                "la_name": "Sidon",
+                "featuretyp": "settlement",
+                "pid": "678393",
+                "timeperiod": "2E1IANCAAHHRRRTLLCAMCCIE1OLKMP",
+                "perseus_li": null,
+                "wiki_link": null,
+                "magnitude": 1
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    35.371208,
+                    33.560243
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "en_name": "",
+                "featuretyp": "unknown",
+                "pid": "-1509780344710",
+                "gr_name": "",
+                "la_name": "",
+                "timeperiod": "ACHRL(*****)",
+                "greek_map": 1,
+                "perseus_li": "",
+                "wiki_link": "",
+                "basename": "Menelaus",
+                "custom_name": ""
+            },
+            "geometry": {
+                "type": "LineString",
+                "coordinates": [
+                    [
+                        26.245616716074,
+                        39.951114571877
+                    ],
+                    [
+                        26.037271667797,
+                        39.822139065801
+                    ],
+                    [
+                        25.987665703921,
+                        39.306237041494
+                    ],
+                    [
+                        25.848769005069,
+                        39.266552270393
+                    ],
+                    [
+                        24.526423524487,
+                        37.949744958358
+                    ],
+                    [
+                        24.132056111675,
+                        37.595062316647
+                    ],
+                    [
+                        23.212759087585,
+                        36.035185781621
+                    ],
+                    [
+                        23.499434048177,
+                        35.150412413031
+                    ],
+                    [
+                        24.751984636038,
+                        35.058641379861
+                    ],
+                    [
+                        23.544079415665,
+                        35.016476310566
+                    ],
+                    [
+                        26.469445111148,
+                        31.54250265653
+                    ],
+                    [
+                        29.852571847468,
+                        31.195260909401
+                    ],
+                    [
+                        31.102642137135,
+                        31.582187427631
+                    ],
+                    [
+                        35.110804018288,
+                        33.189420657202
+                    ],
+                    [
+                        35.368755030441,
+                        33.546583597107
+                    ],
+                    [
+                        32.570978667854,
+                        34.687520766247
+                    ],
+                    [
+                        27.352431268135,
+                        35.997118212564
+                    ],
+                    [
+                        22.848209748225,
+                        36.43365069467
+                    ],
+                    [
+                        22.580337543297,
+                        36.84041959845
+                    ]
+                ]
+            }
+        }
+    ]
+}

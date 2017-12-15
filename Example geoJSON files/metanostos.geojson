@@ -1,0 +1,194 @@
+{
+    "type": "FeatureCollection",
+    "features": [
+        {
+            "type": "Feature",
+            "properties": {
+                "basename": "Sparta",
+                "custom_name": "",
+                "en_name": "Sparta",
+                "gr_name": "Λακεδαίμων",
+                "la_name": "Sparta",
+                "featuretyp": "settlement, temple, theatre",
+                "pid": "570685",
+                "timeperiod": "MACHR",
+                "perseus_li": null,
+                "wiki_link": null,
+                "magnitude": 1
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    22.4295575,
+                    37.0827165
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "basename": "Cyprus (island)",
+                "custom_name": "",
+                "en_name": "Cyprus",
+                "gr_name": "Κύπρος",
+                "la_name": "Cyprus",
+                "featuretyp": "island",
+                "pid": "707498",
+                "timeperiod": "",
+                "perseus_li": null,
+                "wiki_link": null,
+                "magnitude": 1
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    32.6288214881,
+                    35.0444470024
+                ]
+            },
+            "id": 1
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "basename": "Phaistos",
+                "custom_name": "",
+                "en_name": "Phaistos",
+                "gr_name": "",
+                "la_name": "Crete",
+                "featuretyp": "settlement, architecturalcomplex",
+                "pid": "589987",
+                "timeperiod": "4M2LACHRL",
+                "perseus_li": null,
+                "wiki_link": null,
+                "magnitude": 1
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    24.8141725,
+                    35.0511785
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "basename": "Pharos",
+                "custom_name": "",
+                "en_name": "Pharos",
+                "gr_name": "",
+                "la_name": "Egypt",
+                "featuretyp": "lighthouse",
+                "pid": "727197",
+                "timeperiod": "HRL",
+                "perseus_li": null,
+                "wiki_link": null,
+                "magnitude": 1
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    29.885661,
+                    31.213931
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "basename": "Sidon/Col. Aurelia Pia",
+                "custom_name": "",
+                "en_name": "Sidon",
+                "gr_name": "Σιδών",
+                "la_name": "Sidon",
+                "featuretyp": "settlement",
+                "pid": "678393",
+                "timeperiod": "2E1IANCAAHHRRRTLLCAMCCIE1OLKMP",
+                "perseus_li": null,
+                "wiki_link": null,
+                "magnitude": 1
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    35.371208,
+                    33.560243
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "basename": "Malea Pr.",
+                "custom_name": "",
+                "en_name": "Malea Pr.",
+                "gr_name": "Μαλέα",
+                "la_name": "Malea Pr.",
+                "featuretyp": "cape",
+                "pid": "570455",
+                "timeperiod": "",
+                "perseus_li": null,
+                "wiki_link": null,
+                "magnitude": 1
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    23.25,
+                    36.25
+                ]
+            },
+            "id": 3
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "en_name": "",
+                "featuretyp": "unknown",
+                "pid": "-1509776822262",
+                "gr_name": "",
+                "la_name": "",
+                "timeperiod": "ACHRL(*****)",
+                "greek_map": 1,
+                "perseus_li": "",
+                "wiki_link": "",
+                "basename": "metanostos",
+                "custom_name": "metanostos"
+            },
+            "geometry": {
+                "type": "LineString",
+                "coordinates": [
+                    [
+                        22.437848959939,
+                        37.034623915107
+                    ],
+                    [
+                        24.818935225971,
+                        35.109912516732
+                    ],
+                    [
+                        29.878743541288,
+                        31.260489719981
+                    ],
+                    [
+                        35.35524195316,
+                        33.562206443811
+                    ],
+                    [
+                        32.557465590573,
+                        34.693222420176
+                    ],
+                    [
+                        22.457691345489,
+                        37.014781529557
+                    ],
+                    [
+                        22.47753373104,
+                        37.054466300658
+                    ]
+                ]
+            }
+        }
+    ]
+}

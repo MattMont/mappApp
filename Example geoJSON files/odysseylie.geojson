@@ -1,0 +1,227 @@
+{
+    "type": "FeatureCollection",
+    "features": [
+        {
+            "type": "Feature",
+            "properties": {
+                "basename": "Ilium/Troia",
+                "custom_name": "",
+                "en_name": "Troia",
+                "gr_name": "",
+                "la_name": "Troia",
+                "featuretyp": "settlement",
+                "pid": "550595",
+                "timeperiod": "2ACHHRLM",
+                "perseus_li": "",
+                "wiki_link": "",
+                "magnitude": 1
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    26.238889,
+                    39.9575
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "basename": "Ithaca",
+                "custom_name": "",
+                "en_name": "Ithaca",
+                "gr_name": "",
+                "la_name": "Ithaca",
+                "featuretyp": "settlement",
+                "pid": "530905",
+                "timeperiod": "ACHRL",
+                "perseus_li": null,
+                "wiki_link": null,
+                "magnitude": 1
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    20.638399,
+                    38.44193
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "basename": "Thesprotia",
+                "custom_name": "",
+                "en_name": "Thesprotia",
+                "gr_name": "",
+                "la_name": "Thesprotia",
+                "featuretyp": "unknown",
+                "pid": "531117",
+                "timeperiod": "CHR",
+                "perseus_li": null,
+                "wiki_link": null,
+                "magnitude": 1
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    20.25,
+                    39.75
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "en_name": "",
+                "featuretyp": "unknown",
+                "pid": "-1509778662782",
+                "gr_name": "",
+                "la_name": "Egypt",
+                "timeperiod": "ACHRL(*****)",
+                "greek_map": 1,
+                "perseus_li": "",
+                "wiki_link": "",
+                "basename": "Egypt",
+                "custom_name": "Egypt"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    31.126187508676,
+                    31.566490513269
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "en_name": "Phoenicia",
+                "featuretyp": "unknown",
+                "pid": "-1509778725016",
+                "gr_name": "",
+                "la_name": "Phoenicia",
+                "timeperiod": "ACHRL(*****)",
+                "greek_map": 1,
+                "perseus_li": "",
+                "wiki_link": "",
+                "basename": "Phoenicia",
+                "custom_name": "Phoenicia"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    35.6558865802,
+                    34.04220516361
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "en_name": "",
+                "featuretyp": "unknown",
+                "pid": "-1509778775339",
+                "gr_name": "",
+                "la_name": "Creta",
+                "timeperiod": "ACHRL(*****)",
+                "greek_map": 1,
+                "perseus_li": "",
+                "wiki_link": "",
+                "basename": "Creta",
+                "custom_name": "Creta"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    24.883458957222,
+                    35.196698968037
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "en_name": "",
+                "featuretyp": "unknown",
+                "pid": "-1509778791583",
+                "gr_name": "",
+                "la_name": "Shipwreck",
+                "timeperiod": "ACHRL(*****)",
+                "greek_map": 1,
+                "perseus_li": "",
+                "wiki_link": "",
+                "basename": "Shipwreck",
+                "custom_name": "Shipwreck"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    25.02235,
+                    35.79197
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "en_name": "",
+                "featuretyp": "unknown",
+                "pid": "-1509779011396",
+                "gr_name": "",
+                "la_name": "",
+                "timeperiod": "ACHRL(*****)",
+                "greek_map": 1,
+                "perseus_li": "",
+                "wiki_link": "",
+                "basename": "Odysseus",
+                "custom_name": ""
+            },
+            "geometry": {
+                "type": "LineString",
+                "coordinates": [
+                    [
+                        26.264200435612,
+                        39.95195368255
+                    ],
+                    [
+                        25.807825567956,
+                        39.297154959392
+                    ],
+                    [
+                        24.895075832643,
+                        35.209623536038
+                    ],
+                    [
+                        31.145427280976,
+                        31.538782209239
+                    ],
+                    [
+                        35.649648800886,
+                        34.038922788572
+                    ],
+                    [
+                        24.795863904892,
+                        35.844579873646
+                    ],
+                    [
+                        20.251957613882,
+                        36.598590524556
+                    ],
+                    [
+                        20.271799999432,
+                        39.733687441497
+                    ],
+                    [
+                        20.430539083834,
+                        38.503459537381
+                    ],
+                    [
+                        20.648805324887,
+                        38.44393238073
+                    ]
+                ]
+            }
+        }
+    ]
+}

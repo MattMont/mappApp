@@ -1,294 +1,362 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Map Creator</title>
-    <link rel="stylesheet" href="https://openlayers.org/en/v4.4.2/css/ol.css" type="text/css">
-    <!-- The line below is only needed for old environments like Internet Explorer and Android 4.x -->
-    <script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=requestAnimationFrame,Element.prototype.classList,URL"></script></script>
-    <script src="https://openlayers.org/en/v4.4.2/build/ol.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/1.3.3/FileSaver.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" type="text/css">
-  
-    <style>
-      .map {
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        left: 0;
-        right: 20%;
-        font-family: Arial, sans-serif;
-      }
+<head>
+  <title>Map Creator</title>
+  <link rel="stylesheet" href="https://openlayers.org/en/v4.4.2/css/ol.css" type="text/css">
+  <!-- The line below is only needed for old environments like Internet Explorer and Android 4.x -->
+  <script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=requestAnimationFrame,Element.prototype.classList,URL"></script></script>
+  <script src="https://openlayers.org/en/v4.4.2/build/ol.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/1.3.3/FileSaver.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" type="text/css">
+  <script src="https://cdn.rawgit.com/walkermatt/ol3-layerswitcher/6e4cc8c9/src/ol3-layerswitcher.js"></script>
+  <link rel="stylesheet" href="https://cdn.rawgit.com/walkermatt/ol3-layerswitcher/6e4cc8c9/src/ol3-layerswitcher.css" type="text/css">
 
-      .sidebar {
-          position: absolute;
-          top: 0;
-          bottom: 0;
-          right: 0;
-          width: 20%;
-          background: ghostwhite;
-          border-left: 5px solid lightsteelblue;
-          box-sizing: border-box;
-          padding: 0 20px;
-          font-family: Arial, sans-serif;
-      }
+  <style>
+  .map {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 20%;
+    font-family: Arial, sans-serif;
+  }
 
-      .controls {
-        list-style: none;
-        padding: 10px;
-      }
+  .sidebar {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    width: 20%;
+    background: ghostwhite;
+    border-left: 5px solid lightsteelblue;
+    box-sizing: border-box;
+    padding: 0 20px;
+    font-family: Arial, sans-serif;
+  }
 
-      .controls li {
-        margin: 0 0 5px 5px;  
-      } 
+  .controls {
+    list-style: none;
+    padding: 10px;
+  }
 
-      #js-textarea{
-        width: 100%;
-        height: 375px;
-      }
+  .controls li {
+    margin: 0 0 5px 5px;  
+  } 
 
-      .ol-mouse-position {
-        top: inherit;
-        bottom: 8px;
-        left: 8px;
-        background-color: rgba(255,255,255,0.4);
-        border-radius: 2px;
-        width: 100px;
-        text-align: center;
-        font-family: Arial, sans-serif;
-        font-size: 15px;
-      }
+  #js-textarea{
+    width: 100%;
+    height: 375px;
+  }
 
-      .initHide { display: none; }
-    
-      .createButtons{
-        padding: 10px;
-        border-style: inset;
-      }
-
-      .input{
-        margin:10px;
-      }
-
-      .btn-input{
-        margin-top: 10px;
-      }
-
-      .ol-layer-switcher {
-        bottom: 0.5em; left: 0.5em; 
-      }
-
-      .ol-layer-switcher ul {
-        background-color: rgba(0,60,136,0.5);
-        border: none; border-radius: 2px; color: #fff;
-        margin: 0; padding: 0; list-style: none; font-size: 0.9em; 
-      }
-
-      .ol-layer-switcher li {
-        display: block; padding: 8px; }
+  #pop-textarea{
+    width: 100%;
+    height: 375px;
+  }
 
 
-      .ol-layer-switcher li:hover {
-        background: #7b98bc; cursor: pointer; 
-      }
+  .ol-mouse-position {
+    top: inherit;
+    bottom: 8px;
+    left: 8px;
+    background-color: rgba(255,255,255,0.4);
+    border-radius: 2px;
+    width: 100px;
+    text-align: center;
+    font-family: Arial, sans-serif;
+    font-size: 15px;
+  }
 
-      .ol-layer-switcher .active {
-        background: #7b98bc; 
-      }
+  .initHide { display: none; }
 
-    </style>
-  </head>
-  <body>
-    <div id="map" class="map"></div>
-      <div id="buttons" class="buttons"></div>
-    <div class="sidebar">
-      <ul  class="controls">
-        <li>
-          <button id="modFeatButton" class="btn btn-primary btn-block"> Select and Modify Feature</button>
-        </li>
-        <li>
-          <button id="drawFeatButton" class="btn btn-primary btn-block"> Draw Feature</button>
-        </li>
-        <li>
-          <button id="createFeatButton" class="btn btn-primary btn-block"> Create Feature by Coord</button>
-        </li>
-        <li>
-          <button id="createLabelButton" class="btn btn-primary btn-block"> Create Label</button>
-        </li>
-        <li>
-          <button id="createIconButton" class="btn btn-primary btn-block"> Create Icon</button>
-        </li>
-        <li>
-          <button id="editFeatButton" class="btn btn-primary btn-block"> Edit Features</button>
-        </li>
-        <li>
-          <button id="exportButton" class="btn btn-primary btn-block"> Export Map Layers</button>
-        </li>
-      </ul>
-      <div class="createButtons">
-        <div id="modDiv" class="initHide input">
-          <p>Click to select feature and drag to modify.</p>
-        </div>
-        <div id="drawDiv" class="initHide input">
-          <form class="form-inline">
-            <label>Geometry type</label><br>
-              <select id="type">
-                <option value="None">None</option>
-                <option value="Point">Point</option>
-                <option value="LineString">Directional Line</option>
-                <option value="MultiLineString">Line</option>
-              </select>
-            </label>
-          </form>
-        </div>
-        <div id="createDiv" class="initHide input">
-           Lat:<br><input type="text" name="latitude" id="lat"><br>
-           Long:<br><input type="text" name="longitude" id="long"><br>
-            <button id="create" class="btn btn-input btn-default ">Create Feature</button>
-        </div>
-        <div id="labelDiv" class="initHide input">
-           Label Text:<input type="text" name="labelText" id="lab"><br>
-            <button id="createLabel" class="btn btn-input btn-default ">Create Label </button>
-        </div>
-        <div id="iconDiv" class="initHide input">
-          <form class="form-inline">
-            <label>Icon</label><br>
-              <select id="icon">
-                <option value="">None</option>
-                <option value="anchor">Anchor</option>
-                <option value="battle">Battle</option>
-                <option value="boat">Boat</option>
-                <option value="marker">Marker</option>
-                <option value="sacrifice">Sacrifice</option>
-                <option value="settlement">Settlement</option>
-                <option value="storm">Storm</option>
-                <option value="wind">Wind</option>
-              </select>
-            </label>
-          </form>
-          <button id="createIcon" class="btn btn-default btn-input">Create Icon </button>
-        </div>
-        <div id="editDiv" class="initHide input">
-          <button id="delete" class="btn btn-input btn-default ">Delete Feature</button>
-          <button id="edit" class="btn btn-default btn-input" data-target="#edit-modal" data-toggle="modal">Edit GeoJSON String</button> 
-        </div>
-        <div id="exportDiv" class="initHide input">
-          <button id="save" class="btn btn-input btn-default ">Save GeoJSON</button>
-          <a id="export-png" class="btn btn-input btn-default "><i class="fa fa-download"></i> Download PNG</a>
-        </div>
+  .createButtons{
+    padding: 10px;
+    border-style: inset;
+  }
+
+  .input{
+    margin:10px;
+  }
+
+  .btn-input{
+    margin-top: 10px;
+  }
+
+  .ol-layer-switcher {
+    bottom: 0.5em; left: 0.5em; 
+  }
+
+  .ol-layer-switcher ul {
+    background-color: rgba(0,60,136,0.5);
+    border: none; border-radius: 2px; color: #fff;
+    margin: 0; padding: 0; list-style: none; font-size: 0.9em; 
+  }
+
+  .ol-layer-switcher li {
+    display: block; padding: 8px; 
+  }
+
+
+  .ol-layer-switcher li:hover {
+    background: #7b98bc; cursor: pointer; 
+  }
+
+  .ol-layer-switcher .active {
+    background: #7b98bc; 
+  }
+
+  </style>
+</head>
+<body>
+  <div id="map" class="map"></div>
+  <div id="buttons" class="buttons"></div>
+  <div class="sidebar">
+    <ul  class="controls">
+      <li>
+        <button id="modFeatButton" class="btn btn-primary btn-block"> Select and Modify Feature</button>
+      </li>
+      <li>
+        <button id="drawFeatButton" class="btn btn-primary btn-block"> Draw Feature</button>
+      </li>
+      <li>
+        <button id="createFeatButton" class="btn btn-primary btn-block"> Create Feature</button>
+      </li>
+      <li>
+        <button id="createLabelButton" class="btn btn-primary btn-block"> Create Label</button>
+      </li>
+      <li>
+        <button id="createIconButton" class="btn btn-primary btn-block"> Create Icon</button>
+      </li>
+      <li>
+        <button id="editFeatButton" class="btn btn-primary btn-block"> Edit Features</button>
+      </li>
+      <li>
+        <button id="exportButton" class="btn btn-primary btn-block"> Export Map Layers</button>
+      </li>
+    </ul>
+    <div class="createButtons">
+      <div id="modDiv" class="initHide input">
+        <p>Click to select feature and drag to modify.</p>
+      </div>
+      <div id="drawDiv" class="initHide input">
+        <form class="form-inline">
+          <label>Geometry type</label><br>
+          <select id="type">
+            <option value="None">None</option>
+            <option value="Point">Point</option>
+            <option value="LineString">Directional Line</option>
+            <option value="MultiLineString">Line</option>
+          </select>
+        </label>
+      </form>
+    </div>
+    <div id="createDiv" class="initHide input">
+     Lat:<br><input type="text" name="latitude" id="lat" style="width:100%"><br>
+     Long:<br><input type="text" name="longitude" id="long"  style="width:100%"><br>
+     Popup Text<br>
+     <textarea id="popupText" style="width:100%; height:100px"></textarea>
+     <button id="create" class="btn btn-input btn-default ">Create Feature</button><br>
+     <p id="coordError" style="color:red; margin-top:10px"></p>
+   </div>
+   <div id="labelDiv" class="initHide input">
+     Label Text<br><input type="text" name="labelText" id="lab"><br>
+     <button id="createLabel" class="btn btn-input btn-default ">Create Label </button>
+   </div>
+   <div id="iconDiv" class="initHide input">
+    <form class="form-inline">
+      <label>Icon</label><br>
+      <select id="icon">
+        <option value="">None</option>
+        <option value="anchor">Anchor</option>
+        <option value="battle">Battle</option>
+        <option value="boat">Boat</option>
+        <option value="marker">Marker</option>
+        <option value="sacrifice">Sacrifice</option>
+        <option value="settlement">Settlement</option>
+        <option value="storm">Storm</option>
+        <option value="wind">Wind</option>
+      </select>
+    </label>
+  </form>
+  <button id="createIcon" class="btn btn-default btn-input">Create Icon </button>
+</div>
+<div id="editDiv" class="initHide input">
+  <button id="edit-pop" class="btn btn-default btn-input" data-target="#edit-pop-modal" data-toggle="modal" style="width:157px">Edit Popup Text</button> 
+  <button id="delete" class="btn btn-input btn-default" style="width:157px">Delete Feature</button>
+  <button id="edit" class="btn btn-default btn-input" data-target="#edit-modal" data-toggle="modal" style="width:157px">Edit/Save GeoJSON</button> 
+</div>
+<div id="exportDiv" class="initHide input">
+  <button id="saveBase" class="btn btn-input btn-default " style="width:157px">Save Base GeoJSON</button>
+  <button id="saveText" class="btn btn-input btn-default " style="width:157px">Save Label GeoJSON</button>
+  <button id="saveIcon" class="btn btn-input btn-default " style="width:157px">Save Icon GeoJSON</button>
+  <a id="export-png" class="btn btn-input btn-default" style="width:157px"><i class="fa fa-download" ></i> Download PNG</a>
+</div>
+</div>
+</div>
+
+<div id="edit-modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Edit GeoJSON</h4>
+      </div>
+      <div class="modal-body">
+        <textarea id="js-textarea"></textarea>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" id="edit-save">Save File</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
       </div>
     </div>
-   
-  <div id="edit-modal" class="modal fade" role="dialog">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Edit GeoJSON</h4>
-        </div>
-        <div class="modal-body">
-          <textarea id="js-textarea"></textarea>
-          
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" id="edit-save">Save File</button>
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        </div>
+  </div>
+</div>
+
+<div id="edit-pop-modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Edit Popup Text</h4>
+      </div>
+      <div class="modal-body">
+        <textarea id="pop-textarea"></textarea>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" id="save-pop" data-dismiss="modal">Save Edit</button>
+        <button type="button" class="btn btn-default" id="pop-cancel" data-dismiss="modal">Close</button>
       </div>
     </div>
+  </div>
+</div>
+
+<div id="drag-drop-modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Select Layer</h4>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label for="selLayer">Please select the layer you are importing:</label>
+          <select class="form-control" id="selLayer">
+            <option value="base">Base Layer</option>
+            <option value="label">Label Layer</option>
+            <option value="icon">Icon Layer</option>
+          </select>
+        </div>   
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" id="drop-confirm" data-dismiss="modal">Confirm</button>
+        <button type="button" class="btn btn-default" id="drop-cancel" data-dismiss="modal">Cancel</button>
+      </div>
     </div>
-    <script>
+  </div>
+</div>
+<script>
 
 
-    styles = {
-        'Point': new ol.style.Style({
-            image: new ol.style.Circle({
-              fill: new ol.style.Fill({
-                  color: 'white'
-              }),
-              radius: 3,
-              stroke: new ol.style.Stroke({
-                  color: 'black',
-                  width: 2
-              })
-          })
+  styles = {
+    'Point': new ol.style.Style({
+      image: new ol.style.Circle({
+        fill: new ol.style.Fill({
+          color: 'white'
         }),
-        'LineString': new ol.style.Style({
-          stroke: new ol.style.Stroke({
-            color: 'black',
-            width: 2
-          })
-
-        }),
-        'MultiLineString': new ol.style.Style({
-          stroke: new ol.style.Stroke({
-            color: 'black',
-            width: 1
-          })
-        }),
-        'MultiPoint': new ol.style.Style({
-            image: new ol.style.Circle({
-              fill: new ol.style.Fill({
-                  color: 'black'
-              }),
-              radius: 5,
-              stroke: new ol.style.Stroke({
-                  color: '#ff0',
-                  width: 1
-              })
-          })
-        }),
-        'MultiPolygon': new ol.style.Style({
-          stroke: new ol.style.Stroke({
-            color: 'yellow',
-            width: 1
-          }),
-          fill: new ol.style.Fill({
-            color: 'rgba(255, 255, 0, 0.1)'
-          })
-        }),
-        'Polygon': new ol.style.Style({
-          stroke: new ol.style.Stroke({
-            color: 'blue',
-            lineDash: [4],
-            width: 3
-          }),
-          fill: new ol.style.Fill({
-            color: 'rgba(0, 0, 255, 0.1)'
-          })
-        }),
-        'GeometryCollection': new ol.style.Style({
-          stroke: new ol.style.Stroke({
-            color: 'magenta',
-            width: 2
-          }),
-          fill: new ol.style.Fill({
-            color: 'magenta'
-          }),
-          image: new ol.style.Circle({
-            radius: 10,
-            fill: null,
-            stroke: new ol.style.Stroke({
-              color: 'magenta'
-            })
-          })
-        }),
-        'Circle': new ol.style.Style({
-          stroke: new ol.style.Stroke({
-            color: 'red',
-            width: 2
-          }),
-          fill: new ol.style.Fill({
-            color: 'rgba(255,0,0,0.2)'
-          })
+        radius: 3,
+        stroke: new ol.style.Stroke({
+          color: 'black',
+          width: 2
         })
-      };
-      
-    var styleFunction = function(feature, resolution){
-      if (feature.getGeometry().getType() == 'LineString'){
-        var geometry = feature.getGeometry();
-        var lineStyles = [
+      })
+    }),
+    'LineString': new ol.style.Style({
+      stroke: new ol.style.Stroke({
+        color: 'black',
+        width: 2
+      })
+
+    }),
+    'MultiLineString': new ol.style.Style({
+      stroke: new ol.style.Stroke({
+        color: 'black',
+        width: 1
+      })
+    }),
+    'MultiPoint': new ol.style.Style({
+      image: new ol.style.Circle({
+        fill: new ol.style.Fill({
+          color: 'black'
+        }),
+        radius: 5,
+        stroke: new ol.style.Stroke({
+          color: '#ff0',
+          width: 1
+        })
+      })
+    }),
+    'MultiPolygon': new ol.style.Style({
+      stroke: new ol.style.Stroke({
+        color: 'yellow',
+        width: 1
+      }),
+      fill: new ol.style.Fill({
+        color: 'rgba(255, 255, 0, 0.1)'
+      })
+    }),
+    'Polygon': new ol.style.Style({
+      stroke: new ol.style.Stroke({
+        color: 'blue',
+        lineDash: [4],
+        width: 3
+      }),
+      fill: new ol.style.Fill({
+        color: 'rgba(0, 0, 255, 0.1)'
+      })
+    }),
+    'GeometryCollection': new ol.style.Style({
+      stroke: new ol.style.Stroke({
+        color: 'magenta',
+        width: 2
+      }),
+      fill: new ol.style.Fill({
+        color: 'magenta'
+      }),
+      image: new ol.style.Circle({
+        radius: 10,
+        fill: null,
+        stroke: new ol.style.Stroke({
+          color: 'magenta'
+        })
+      })
+    }),
+    'Circle': new ol.style.Style({
+      stroke: new ol.style.Stroke({
+        color: 'red',
+        width: 2
+      }),
+      fill: new ol.style.Fill({
+        color: 'rgba(255,0,0,0.2)'
+      })
+    })
+  };
+
+  function hasProperty(feature,prop){
+    var list = feature.getKeys();
+    if (list.includes(prop)){
+      return true;
+    } else {
+      return false;
+    }
+  };
+
+  var styleFunction = function(feature, resolution){
+    if (feature.getGeometry().getType() == 'LineString'){
+      var geometry = feature.getGeometry();
+      var lineStyles = [
           // linestring
           new ol.style.Style({
             stroke: new ol.style.Stroke({
@@ -296,17 +364,17 @@
               width: 1
             })
           })
-        ];
+          ];
 
-       geometry.forEachSegment(function(start, end) {
-          var dx = end[0] - start[0];
-          var dy = end[1] - start[1];
-          var len =Math.sqrt(Math.pow(dx,2) + Math.pow(dy,2)); 
-          var rotation = Math.atan2(dy, dx);
-          var xAve = (start[0] + end[0])/2;
-          var yAve = (start[1] + end[1])/2;
-          mid = [xAve,yAve];
-        
+          geometry.forEachSegment(function(start, end) {
+            var dx = end[0] - start[0];
+            var dy = end[1] - start[1];
+            var len =Math.sqrt(Math.pow(dx,2) + Math.pow(dy,2)); 
+            var rotation = Math.atan2(dy, dx);
+            var xAve = (start[0] + end[0])/2;
+            var yAve = (start[1] + end[1])/2;
+            mid = [xAve,yAve];
+
           // arrows
           if(len > 150000){ //only longer lines get arrows
             lineStyles.push(new ol.style.Style({
@@ -321,84 +389,152 @@
             }));
           };
         });
-        return lineStyles;
+          return lineStyles;
+        } else {
+          return styles[feature.getGeometry().getType()];
+        };
+      };
+
+      function labelStyleFunction(feature, resolution) {
+      if (hasProperty(feature,'la_name')){//may not be necessary
+        return new ol.style.Style({
+          text: new ol.style.Text({
+            text: feature.get('la_name'),
+            font:'16px Arial',
+            fill: new ol.style.Fill({color: 'black'}),
+            stroke: new ol.style.Stroke({color: 'white', width: 5}),
+          })
+        });
       } else {
         return styles[feature.getGeometry().getType()];
       };
     };
 
-    function labelStyleFunction(feature, resolution) {
-      if (feature.get('la_name') != 'None'){//may not be necessary
-        return new ol.style.Style({
-            text: new ol.style.Text({
-              text: feature.get('la_name'),
-              font:'16px Arial',
-              fill: new ol.style.Fill({color: 'black'}),
-          stroke: new ol.style.Stroke({color: 'white', width: 5}),
-            })
-        });
-      }
-    }
-
     function iconStyleFunction(feature, resolution) {
-      return new ol.style.Style({
-        image: new ol.style.Icon(/** @type {olx.style.IconOptions} */ ({
-          src: feature.get('icon_path')
-        }))
-      });
-    }
-
-
-      /* Beggining of Drawing */
-
-      var labelSource = new ol.source.Vector({
-      }); 
-
-      var labelVector = new ol.layer.Vector({ 
-        source: labelSource,    
-        style: labelStyleFunction
+      if (hasProperty(feature,'icon_path')){
+        return new ol.style.Style({
+          image: new ol.style.Icon(/** @type {olx.style.IconOptions} */ ({
+            src: feature.get('icon_path')
+          }))
         });
+      } else {
+        return styles[feature.getGeometry().getType()];
+      };
+    };
 
-      var iconSource = new ol.source.Vector({
-      }); 
 
-      var iconVector = new ol.layer.Vector({ 
-        source: iconSource,    
-        style: iconStyleFunction
-        });
+    /* Beggining of Drawing */
 
-      var source = new ol.source.Vector({
-      }); 
+    var labelSource = new ol.source.Vector({
+    }); 
 
-      var vector = new ol.layer.Vector({ 
-        source: source,    
-        style: styleFunction
-        });
-      /*Map*/
+    var labelVector = new ol.layer.Vector({ 
+      source: labelSource,    
+      style: labelStyleFunction
+    });
 
-      var raster = new ol.layer.Tile({
-        source: new ol.source.XYZ({
-              urls:
-              [
-                "http://a.tiles.mapbox.com/v3/isawnyu.map-knmctlkh/{z}/{x}/{y}.png",
-                "http://b.tiles.mapbox.com/v3/isawnyu.map-knmctlkh/{z}/{x}/{y}.png",
-                "http://c.tiles.mapbox.com/v3/isawnyu.map-knmctlkh/{z}/{x}/{y}.png",
-                "http://d.tiles.mapbox.com/v3/isawnyu.map-knmctlkh/{z}/{x}/{y}.png"
-              ],
-              crossOrigin: 'anonymous'
+    var iconSource = new ol.source.Vector({
+    }); 
+
+    var iconVector = new ol.layer.Vector({ 
+      source: iconSource,    
+      style: iconStyleFunction
+    });
+
+    var source = new ol.source.Vector({
+    }); 
+
+    var vector = new ol.layer.Vector({ 
+      source: source,    
+      style: styleFunction
+    });
+    /*Map*/
+
+
+
+    var initCoord = new ol.proj.fromLonLat([20, 34]);
+    var extent = [0, 0, 1024, 968];
+    var projection = new ol.proj.Projection({
+      units: 'pixels',
+      extent: extent
+    });
+    var map = new ol.Map({
+      layers: [
+      new ol.layer.Group({
+        'title': 'Base maps',
+        layers: [
+        new ol.layer.Group({
+          title: 'Black and White',
+          type: 'base',
+          combine: true,
+          visible: false,
+          layers: [
+          new ol.layer.Image({
+            source: new ol.source.ImageStatic({
+              url: './res/whitebackground.png',
+              projection: projection,
+              imageExtent: extent
             })
-      });
+          }),
+          new ol.layer.Tile({
+           source: new ol.source.XYZ({
+            urls:
+            [
+            "http://a.tiles.mapbox.com/v3/isawnyu.eoupu8fr/{z}/{x}/{y}.png",
+            "http://b.tiles.mapbox.com/v3/isawnyu.eoupu8fr/{z}/{x}/{y}.png",
+            "http://c.tiles.mapbox.com/v3/isawnyu.eoupu8fr/{z}/{x}/{y}.png",
+            "http://d.tiles.mapbox.com/v3/isawnyu.eoupu8fr/{z}/{x}/{y}.png"
+            ],
+            crossOrigin: 'anonymous',
+            attributions: [
+            new ol.Attribution({
+              html: "Tiles &copy;" + "<a href='http://mapbox.com/'>MapBox</a>" +
+              "Tiles and Data &copy 2017 <a href='http://www.awmc.unc.edu'>AWMC</a>" +
+              " <a href='https://creativecommons.org/licenses/by/4.0/'>CC-BY-NC 4.0</a>"
+            }),
+            ],
+          })
+         }),
 
-      var initCoord = new ol.proj.fromLonLat([20, 34]);
-      var map = new ol.Map({
-        layers: [ raster, vector, iconVector, labelVector],
-        target: 'map',
-        view: new ol.View({
-          projection: 'EPSG:3857',
-          center: initCoord,
-          zoom: 4
+          ]
+        }),
+        new ol.layer.Tile({
+          title: 'Colour',
+          type: 'base',
+          visible: true,
+          source: new ol.source.XYZ({
+            urls:
+            [
+            "http://a.tiles.mapbox.com/v3/isawnyu.map-knmctlkh/{z}/{x}/{y}.png",
+            "http://b.tiles.mapbox.com/v3/isawnyu.map-knmctlkh/{z}/{x}/{y}.png",
+            "http://c.tiles.mapbox.com/v3/isawnyu.map-knmctlkh/{z}/{x}/{y}.png",
+            "http://d.tiles.mapbox.com/v3/isawnyu.map-knmctlkh/{z}/{x}/{y}.png"
+            ],
+            crossOrigin: 'anonymous',
+            attributions: [
+            new ol.Attribution({
+              html: "Tiles &copy;" + "<a href='http://mapbox.com/'>MapBox</a>" +
+              "Tiles and Data &copy 2017 <a href='http://www.awmc.unc.edu'>AWMC</a>" +
+              " <a href='https://creativecommons.org/licenses/by/4.0/'>CC-BY-NC 4.0</a>"
+            }),
+            ],
+          })
         })
-      });
+        ]
+      }),
+
+      vector, iconVector, labelVector],
+      target: 'map',
+      view: new ol.View({
+        projection: 'EPSG:3857',
+        center: initCoord,
+        zoom: 4
+      })
+    });
+
+    var layerSwitcher = new ol.control.LayerSwitcher({
+    });
+    map.addControl(layerSwitcher);
 
       // idea from opoenLayers 3.x Cookbook by Peter J. Langley, Antonio Santiago Perez
       var mousePositionControl = new ol.control.MousePosition({
@@ -408,7 +544,7 @@
 
       map.addControl(mousePositionControl)
       /*start of drawing*/
-     
+
 
       var draw, snap, labelDraw; // global so we can remove them later
       var featureTypeselect = document.getElementById('type');
@@ -421,6 +557,26 @@
       var selectedFeatureID;
       var selectedLayer = vector;
 
+      function addSelectMod(){
+        resetType();
+        select_interaction = new ol.interaction.Select({
+          wrapX: false,
+          hitTolerance:5
+        });
+        map.addInteraction(select_interaction);
+
+        select_interaction.getFeatures().on('add', function (event) {
+          var properties = event.element.getProperties();
+          selectedFeatureID = properties.id;
+        });
+
+
+        modify = new ol.interaction.Modify({
+          features: select_interaction.getFeatures()
+        });
+
+        map.addInteraction(modify);
+      }
       function addFeatureInteractions() {
         var value = featureTypeselect.value;
         if (value !== 'None'){ //will have to add seperate ifs for types
@@ -432,28 +588,13 @@
           draw.on('drawend', function (event) {
             featureID = featureID + 1;
             event.feature.setProperties({
-                'id': featureID
+              'id': featureID,
+              'passage': ''
             })
-         })
+          })
           map.addInteraction(draw);
         } else {
-            select_interaction = new ol.interaction.Select({
-              wrapX: false,
-              hitTolerance: 10
-            });
-            map.addInteraction(select_interaction);
-
-            select_interaction.getFeatures().on('add', function (event) {
-              var properties = event.element.getProperties();
-              selectedFeatureID = properties.id;
-            });
-             
-
-            modify = new ol.interaction.Modify({
-              features: select_interaction.getFeatures()
-            });
-
-            map.addInteraction(modify);
+          addSelectMod();
         }
         snap = new ol.interaction.Snap({source: source});
         map.addInteraction(snap);
@@ -462,7 +603,7 @@
       /**
        * Handle change event.
        */
-      featureTypeselect.onchange = function() {
+       featureTypeselect.onchange = function() {
         map.removeInteraction(draw);
         map.removeInteraction(snap);
         map.removeInteraction(select_interaction);
@@ -493,15 +634,12 @@
         map.forEachLayerAtPixel(evt.pixel, function(layer){ 
           if(layer===labelVector) {
             selectedLayer = labelVector;
-            console.log("label");
           } 
           if(layer===vector){
             selectedLayer = vector;
-            console.log("vector");
           }
           if(layer===iconVector){
             selectedLayer = iconVector;
-            console.log("icon vector");
           }
         });
       });   
@@ -511,66 +649,102 @@
        *Start of drag and drop
        */
 
+       function importLayerSelect(){
+        var value = selLayer.value;
+        var layer = null;
+
+        switch(value){
+          case 'base':
+          layer = source;
+          break;
+          case 'label':
+          layer = labelSource;
+          break;
+          case 'icon':
+          layer = iconSource;
+          break;
+          default:
+          layer = source;
+        }
+
+        return layer;
+      }
+
       var dragAndDropInteraction = new ol.interaction.DragAndDrop({
         formatConstructors: [
-          ol.format.GPX,
-          ol.format.GeoJSON,
-          ol.format.IGC,
-          ol.format.KML,
-          ol.format.TopoJSON
+        ol.format.GPX,
+        ol.format.GeoJSON,
+        ol.format.IGC,
+        ol.format.KML,
+        ol.format.TopoJSON
         ]
       });
 
       map.addInteraction(dragAndDropInteraction);
-
-      dragAndDropInteraction.on('addfeatures', function(event) {
+      function addToLayer(event){
         var features = event.features;
         if (features != null && features.length > 0) {
           for (x in features){
             featureID = featureID + 1;
-              features[x].setProperties({
-                    'id': featureID
-              })
+            features[x].setProperties({
+              'id': featureID
+            })
           }
         }
-        source.addFeatures(features);     
+        return features;
+      };
+      
+      var dropEvent = null;
+      dragAndDropInteraction.on('addfeatures', function(event) {
+        $("#drag-drop-modal").modal();  
+        dropEvent = event; 
       });
 
+      var layerSource =null;
+      $("#drop-confirm").click(function(){
+        layerSource = importLayerSelect();
+        features=addToLayer(dropEvent);
+        layerSource.addFeatures(features); 
+      });
 
       function deleteFeature() {
         var features = selectedLayer.getSource().getFeatures();
+        //removeInteractions();
         if (features != null && features.length > 0) {
          for (x in features) {
-            var properties = features[x].getProperties();
-            var id = properties.id;
-            if (id == selectedFeatureID) {
-              selectedLayer.getSource().removeFeature(features[x]);
-               break;
-            }
+          var properties = features[x].getProperties();
+          var id = properties.id;
+          if (id == selectedFeatureID) {
+            selectedLayer.getSource().removeFeature(features[x]);
+            break;
           }
         }
-      };
-  
-      $("#modFeatButton").click(function(){
-        resetType();
-        select_interaction = new ol.interaction.Select({
-              wrapX: false,
-              hitTolerance: 10
-            });
-            map.addInteraction(select_interaction);
+      }
+    };
 
-            select_interaction.getFeatures().on('add', function (event) {
-              var properties = event.element.getProperties();
-              selectedFeatureID = properties.id;
-            });
-             
+    var selectedFeature = null;
+    function editFeaturePassage() {
+      var features = source.getFeatures();
+        //removeInteractions();
+        if (features != null && features.length > 0) {
+         for (x in features) {
+          var properties = features[x].getProperties();
+          var id = properties.id;
+          var pass = properties.passage;
+          if (id == selectedFeatureID) {
+            console.log(id);
+            document.getElementById('pop-textarea').value = pass;
+            selectedFeature = features[x];
+            break;
+          }
+        }
+      }
+    };
 
-            modify = new ol.interaction.Modify({
-              features: select_interaction.getFeatures()
-            });
 
-            map.addInteraction(modify);
-      });
+    $("#modFeatButton").click(function(){
+      addSelectMod();
+    });
 
       //must validate
       $("#createLabel").click(function() {
@@ -584,8 +758,8 @@
         labelDraw.on('drawend', function (event) {
           featureID = featureID + 1;
           event.feature.setProperties({
-              'id': featureID,
-              'la_name': name
+            'id': featureID,
+            'la_name': name
           })
           map.removeInteraction(labelDraw);
           removeInteractions();
@@ -607,8 +781,8 @@
         iconDraw.on('drawend', function (event) {
           featureID = featureID + 1;
           event.feature.setProperties({
-              'id': featureID,
-              'icon_path': icon
+            'id': featureID,
+            'icon_path': icon
           })
           map.removeInteraction(iconDraw);
           removeInteractions();
@@ -620,37 +794,56 @@
 
 
     //will not work if it does not have an id
-     $("#delete").click(function() {
-        deleteFeature(); 
-        map.removeInteraction(select_interaction); 
-        addFeatureInteractions();  
+    $("#delete").click(function() {
+      deleteFeature(); 
+      removeInteractions();
+      addSelectMod();
+        //addFeatureInteractions();  
       });
- 
-      
 
-      /*start of export*/
-      document.getElementById('export-png').addEventListener('click', function() {
-        map.once('postcompose', function(event) {
-          var canvas = event.context.canvas;
-          if (navigator.msSaveBlob) {
-            navigator.msSaveBlob(canvas.msToBlob(), 'map.png');
-          } else {
-            canvas.toBlob(function(blob) {
-              saveAs(blob, 'map.png');
-            });
-          }
-        });
-        map.renderSync();
+
+
+    /*start of export*/
+    document.getElementById('export-png').addEventListener('click', function() {
+      map.once('postcompose', function(event) {
+        var canvas = event.context.canvas;
+        if (navigator.msSaveBlob) {
+          navigator.msSaveBlob(canvas.msToBlob(), 'map.png');
+        } else {
+          canvas.toBlob(function(blob) {
+            saveAs(blob, 'map.png');
+          });
+        }
       });
+      map.renderSync();
+    });
+
+    $("#edit-pop").click(function() {
+      editFeaturePassage();
+    });
+
+      //for the modal
+      $("#save-pop").click(function() {
+        var pass = document.getElementById('pop-textarea').value;
+        selectedFeature.setProperties({
+          'passage': pass       
+        })
+        
+      });
+
+      function cloneSource(source){
+        var features = [];
+        source.forEachFeature(function(feature) {
+          var clone = feature.clone();
+          clone.getGeometry().transform('EPSG:3857', 'EPSG:4326');
+          features.push(clone);
+        });
+        return features;
+      };
 
       //brings up modal
       $("#edit").click(function() {
-        var features = [];
-        source.forEachFeature(function(feature) {
-            var clone = feature.clone();
-            clone.getGeometry().transform('EPSG:3857', 'EPSG:4326');
-            features.push(clone);
-          });
+        var features = cloneSource(source);
         var geojsonStr = new ol.format.GeoJSON().writeFeatures(features);
         document.getElementById('js-textarea').value = geojsonStr;
       });
@@ -658,36 +851,83 @@
       //for the modal
       $("#edit-save").click(function() {
         var geojsonStr = document.getElementById('js-textarea').value;
+        var file = new File([geojsonStr], "base.geojson",{type: "text/plain;charset=utf-8"});
+        saveAs(file);
+      });
+
+      //save Base button
+      $("#saveBase").click(function() {
+        var features = cloneSource(source);
+        var geojsonStr =  new ol.format.GeoJSON().writeFeatures(features);
         var file = new File([geojsonStr], "features.geojson",{type: "text/plain;charset=utf-8"});
         saveAs(file);
       });
 
-      //save button
-      $("#save").click(function() {
-        var writer = new ol.format.GeoJSON({
-          defaultDataProjection:'EPSG:4326'
-        });
-        var geojsonStr =  writer.writeFeatures(source.getFeatures());
-        var file = new File([geojsonStr], "features.geojson",{type: "text/plain;charset=utf-8"});
+      $("#saveText").click(function() {
+        var features = cloneSource(labelSource);
+        var geojsonStr =  new ol.format.GeoJSON().writeFeatures(features);
+        var file = new File([geojsonStr], "label.geojson",{type: "text/plain;charset=utf-8"});
         saveAs(file);
       });
 
+      $("#saveIcon").click(function() {
+        var features = cloneSource(iconSource);
+        var geojsonStr =  new ol.format.GeoJSON().writeFeatures(features);
+        var file = new File([geojsonStr], "icon.geojson",{type: "text/plain;charset=utf-8"});
+        saveAs(file);
+      });
+
+
+      var setCenter = function(lon, lat) {
+        map.getView().setCenter(ol.proj.fromLonLat([
+          parseFloat(lon), parseFloat(lat)
+          ]));
+      };
+      function latLongValidation() {
+        var text='';
+        var lat = parseFloat(document.getElementById('lat').value);
+        var long = parseFloat(document.getElementById('long').value);
+        if (isNaN(lat) || lat < -90 || lat > 90) {
+          text = "Latitude must be a number between -90 and 90";
+          document.getElementById("coordError").innerHTML = text;
+          return false;
+        } else if (isNaN(long) || lat < -180 || lat > 180){
+          text = "Latitude must be a number between -180 and 180";
+          document.getElementById("coordError").innerHTML = text;
+          return false;
+        } else {
+          document.getElementById("coordError").innerHTML = text;
+          return true;
+          
+        }
+        
+      }
 
       //needs validation
       $("#create").click(function(){
-        var lat = parseFloat(document.getElementById('lat').value);
-        var long = parseFloat(document.getElementById('long').value);
-        console.log(long + ' ' + lat);
+        if (latLongValidation()){
 
-        var coordinate = new ol.proj.fromLonLat([long, lat]);
-        var newFeature = new ol.Feature({
-          geometry: new ol.geom.Point(coordinate)
-        });
+          var lat = parseFloat(document.getElementById('lat').value);
+          var long = parseFloat(document.getElementById('long').value);
+          var text = document.getElementById('popupText').value;
 
-        source.addFeature(newFeature);
-        
-        document.getElementById('lat').value = '';
-        document.getElementById('long').value = '';
+          var coordinate = new ol.proj.fromLonLat([long, lat]);
+          var newFeature = new ol.Feature({
+            geometry: new ol.geom.Point(coordinate)
+          });
+          featureID = featureID + 1
+          newFeature.setProperties({
+            'id': featureID,
+            'passage': text
+          });
+
+          source.addFeature(newFeature);
+          setCenter(long,lat);
+          
+          document.getElementById('lat').value = '';
+          document.getElementById('long').value = '';
+          document.getElementById('popupText').value = '';
+        }
       });
 
       var toggleTime = 250;
@@ -708,6 +948,7 @@
       $(document).ready(function(){
         $("#createFeatButton").click(function(){
           $("div.initHide").hide(toggleTime);
+          document.getElementById('popupText').value='';
           $("#createDiv").toggle(toggleTime);
         });
       });
@@ -729,6 +970,7 @@
       $(document).ready(function(){
         $("#editFeatButton").click(function(){
           $("div.initHide").hide(toggleTime);
+          addSelectMod();
           $("#editDiv").toggle(toggleTime);
         });
       });
@@ -740,6 +982,8 @@
         });
       });
 
+      
+
     </script>
   </body>
-</html>
+  </html>

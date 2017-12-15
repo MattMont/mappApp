@@ -1,0 +1,15 @@
+		#map {
+        	position: relative;
+        	height: 500px;
+        	width: 900px;
+        	padding-left: 20px;
+        	
+      	}
+
+      	.ol-viewport{
+      		border: solid #000;
+			     border-width: 1px;
+      	}
+      	.popover{
+    		min-width: 280px;
+		    }

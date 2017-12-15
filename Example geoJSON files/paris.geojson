@@ -1,0 +1,206 @@
+{
+    "type": "FeatureCollection",
+    "features": [
+        {
+            "type": "Feature",
+            "properties": {
+                "basename": "Sidon/Col. Aurelia Pia",
+                "custom_name": "",
+                "en_name": "Sidon",
+                "gr_name": "Σιδών",
+                "la_name": "Sidon",
+                "featuretyp": "settlement",
+                "pid": "678393",
+                "timeperiod": "2E1IANCAAHHRRRTLLCAMCCIE1OLKMP",
+                "perseus_li": null,
+                "wiki_link": null,
+                "magnitude": 1
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    35.371208,
+                    33.560243
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "basename": "Sparta",
+                "custom_name": "",
+                "en_name": "Sparta",
+                "gr_name": "Λακεδαίμων",
+                "la_name": "Sparta",
+                "featuretyp": "settlement, temple, theatre",
+                "pid": "570685",
+                "timeperiod": "MACHR",
+                "perseus_li": null,
+                "wiki_link": null,
+                "magnitude": 1
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    22.4295575,
+                    37.0827165
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "basename": "Malea Pr.",
+                "custom_name": "",
+                "en_name": "Malea Pr.",
+                "gr_name": "Μαλέα",
+                "la_name": "Malea Pr.",
+                "featuretyp": "cape",
+                "pid": "570455",
+                "timeperiod": "",
+                "perseus_li": null,
+                "wiki_link": null,
+                "magnitude": 1
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    23.25,
+                    36.25
+                ]
+            },
+            "id": 3
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "basename": "Egypt",
+                "custom_name": "",
+                "en_name": "Troia",
+                "gr_name": "",
+                "la_name": "Egypt",
+                "featuretyp": "settlement",
+                "pid": "550595",
+                "timeperiod": "2ACHHRLM",
+                "perseus_li": null,
+                "wiki_link": null,
+                "magnitude": 1
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                	30.0834226,
+                    31.3365158
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "basename": "Ilium/Troia",
+                "custom_name": "",
+                "en_name": "Troia",
+                "gr_name": "",
+                "la_name": "Troia",
+                "featuretyp": "settlement",
+                "pid": "550595",
+                "timeperiod": "2ACHHRLM",
+                "perseus_li": null,
+                "wiki_link": null,
+                "magnitude": 1
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    26.238889,
+                    39.9575
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "en_name": "",
+                "featuretyp": "unknown",
+                "pid": "-1509771630156",
+                "gr_name": "",
+                "la_name": "",
+                "timeperiod": "ACHRL(*****)",
+                "greek_map": 1,
+                "perseus_li": "",
+                "wiki_link": "",
+                "basename": "",
+                "custom_name": "Paris "
+            },
+            "geometry": {
+                "type": "LineString",
+                "coordinates": [
+                    [
+                        22.437063816585,
+                        37.066667800224
+                    ],
+                    [
+                        22.962887033667,
+                        36.40194788429
+                    ],
+                    [
+                        26.097983950609,
+                        36.143996872136
+                    ],
+                    [
+                        30.076382253436,
+                        31.322297183422
+                    ],
+                    [
+                        35.384220388132,
+                        33.544644365052
+                    ],
+                    [
+                        32.685655953296,
+                        34.56652722089
+                    ],
+                    [
+                        26.097983950609,
+                        36.143996872136
+                    ],
+                    [
+                        25.780505781804,
+                        39.854522970036
+                    ],
+                    [
+                        26.226959456685,
+                        39.943813705012
+                    ],
+                    [
+                        26.246801842236,
+                        39.953734897787
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "basename": "Cyprus (island)",
+                "custom_name": "",
+                "en_name": "Cyprus",
+                "gr_name": "Κύπρος",
+                "la_name": "Cyprus",
+                "featuretyp": "island",
+                "pid": "707498",
+                "timeperiod": "",
+                "perseus_li": null,
+                "wiki_link": null,
+                "magnitude": 1
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    32.6288214881,
+                    35.0444470024
+                ]
+            },
+            "id": 1
+        }
+    ]
+}

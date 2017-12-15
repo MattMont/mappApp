@@ -1,0 +1,324 @@
+{
+    "type": "FeatureCollection",
+    "features": [
+        {
+            "type": "Feature",
+            "properties": {
+                "basename": "Ilium/Troia",
+                "custom_name": "",
+                "en_name": "Troia",
+                "gr_name": "",
+                "la_name": "Troia",
+                "featuretyp": "settlement",
+                "pid": "550595",
+                "timeperiod": "2ACHHRLM",
+                "perseus_li": null,
+                "wiki_link": null,
+                "magnitude": 1
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    26.238889,
+                    39.9575
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "basename": "Lesbos (island)",
+                "custom_name": "",
+                "en_name": "Lesbos",
+                "gr_name": "Λέσβος",
+                "la_name": "Lesbos",
+                "featuretyp": "island",
+                "pid": "550696",
+                "timeperiod": "M",
+                "perseus_li": null,
+                "wiki_link": null,
+                "magnitude": 1
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    26.1342123,
+                    39.2074811
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "basename": "Geraistos",
+                "custom_name": "",
+                "en_name": "Geraistos",
+                "gr_name": "",
+                "la_name": "Geraistos",
+                "featuretyp": "settlement",
+                "pid": "570258",
+                "timeperiod": "ACHR",
+                "perseus_li": null,
+                "wiki_link": null,
+                "magnitude": 1
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    24.547973,
+                    37.97903
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "basename": "Psyra Ins.",
+                "custom_name": "",
+                "en_name": "Psyra",
+                "gr_name": "",
+                "la_name": "Psyra",
+                "featuretyp": "island",
+                "pid": "550846",
+                "timeperiod": "M",
+                "perseus_li": null,
+                "wiki_link": null,
+                "magnitude": 1
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    25.586,
+                    38.567
+                ]
+            },
+            "id": 1
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "basename": "Sounion Pr.",
+                "custom_name": "",
+                "en_name": "Sounion Pr.",
+                "gr_name": "Σούνιον",
+                "la_name": "Sounion Pr.",
+                "featuretyp": "cape",
+                "pid": "580108",
+                "timeperiod": "",
+                "perseus_li": null,
+                "wiki_link": null,
+                "magnitude": 1
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    24.125,
+                    37.625
+                ]
+            },
+            "id": 2
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "basename": "Argos",
+                "custom_name": "",
+                "en_name": "Pelasgia",
+                "gr_name": "Ἄργος",
+                "la_name": "Argos",
+                "featuretyp": "settlement",
+                "pid": "570106",
+                "timeperiod": "ACHR",
+                "perseus_li": null,
+                "wiki_link": null,
+                "magnitude": 1
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    22.719464,
+                    37.631561
+                ]
+            },
+            "id": 6
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "basename": "Malea Pr.",
+                "custom_name": "",
+                "en_name": "Malea Pr.",
+                "gr_name": "Μαλέα",
+                "la_name": "Malea Pr.",
+                "featuretyp": "cape",
+                "pid": "570455",
+                "timeperiod": "",
+                "perseus_li": null,
+                "wiki_link": null,
+                "magnitude": 1
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    23.25,
+                    36.25
+                ]
+            },
+            "id": 3
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "basename": "Pylos",
+                "custom_name": "",
+                "en_name": "Pylos",
+                "gr_name": "",
+                "la_name": "Pylos",
+                "featuretyp": "settlement",
+                "pid": "570640",
+                "timeperiod": "ACHR",
+                "perseus_li": null,
+                "wiki_link": null,
+                "magnitude": 1
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    21.65854,
+                    36.951434
+                ]
+            },
+            "id": 7
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "basename": "Tenedos Ins.",
+                "custom_name": "",
+                "en_name": "Tenedos",
+                "gr_name": "",
+                "la_name": "Tenedos",
+                "featuretyp": "island",
+                "pid": "550912",
+                "timeperiod": "ACHRL",
+                "perseus_li": null,
+                "wiki_link": null,
+                "magnitude": 1
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    26.05,
+                    39.816667
+                ]
+            },
+            "id": 1
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "en_name": "",
+                "featuretyp": "unknown",
+                "pid": "-1509769666909",
+                "gr_name": "",
+                "la_name": "",
+                "timeperiod": "ACHRL(*****)",
+                "greek_map": 1,
+                "perseus_li": "",
+                "wiki_link": "",
+                "basename": "",
+                "custom_name": "Nestor"
+            },
+            "geometry": {
+                "type": "LineString",
+                "coordinates": [
+                    [
+                        26.140823187972,
+                        39.94283036498
+                    ],
+                    [
+                        25.987044699958,
+                        39.833697244454
+                    ],
+                    [
+                        25.937438736082,
+                        39.823776051679
+                    ],
+                    [
+                        25.892793368594,
+                        39.283071045434
+                    ],
+                    [
+                        25.486024464814,
+                        38.593548147562
+                    ],
+                    [
+                        24.612959500602,
+                        37.923867635241
+                    ],
+                    [
+                        24.166505825721,
+                        37.596468273662
+                    ],
+                    [
+                        23.179347144595,
+                        36.897024183015
+                    ],
+                    [
+                        23.258716686797,
+                        36.371200965933
+                    ],
+                    [
+                        22.80234181914,
+                        36.465452297297
+                    ],
+                    [
+                        22.499745439499,
+                        36.286870827344
+                    ],
+                    [
+                        21.611798686125,
+                        36.817654640814
+                    ],
+                    [
+                        21.66140465,
+                        36.94663014689
+                    ],
+                    [
+                        21.66140465,
+                        36.951590743278
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "en_name": "",
+                "featuretyp": "unknown",
+                "pid": "-1509769713415",
+                "gr_name": "",
+                "la_name": "",
+                "timeperiod": "ACHRL(*****)",
+                "greek_map": 1,
+                "perseus_li": "",
+                "wiki_link": "",
+                "basename": "",
+                "custom_name": ""
+            },
+            "geometry": {
+                "type": "LineString",
+                "coordinates": [
+                    [
+                        23.179237626532,
+                        36.898647381427
+                    ],
+                    [
+                        22.72162260978,
+                        37.630335348593
+                    ]
+                ]
+            }
+        }
+    ]
+}
