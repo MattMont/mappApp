@@ -1,14 +1,18 @@
 # Map Creator and web map template
 
-The Map Creator web app be used to create maps using the AWMC background tiles. The maps can be made from scratch or geographic data from from various file formats can be added and modified. The layers from the maps created can be saved and used with the web map 
+The Map Creator web app be used to create maps using the AWMC background tiles. The maps can be made from scratch or geographic data
+from from various file formats can be added and modified. The layers from the maps created can be saved and used with the web map 
 template so the maps can be used in a web page.
 
-## Getting Started 
+## Getting Started
 
+Select click on the large green "clone or download" button in the top right corner of the page. Select "download zip" and after it 
+downloaded, unzip the file. The map Creator can be accessed by opening the "mapCreator.html" file. 
 
-# Itinerary Maps
+The layer files saved using the map creator must be saved in the same file as the web map template. Please note that the web map
+cannot be viewed properly unless the template files are hosted on a web server.
 
-An embeddable map that uses Openlayers and javascript to plot the itineraries of heroes in Greek Myth.
+## Map Creator
 
 ### Adding Geojson file
 To change the Geojson file being pulled from, the url option of the locations variable must be changed to match the file name.
