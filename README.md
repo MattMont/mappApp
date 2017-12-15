@@ -13,6 +13,43 @@ The layer files saved using the map creator must be saved in the same file as th
 cannot be viewed properly unless the template files are hosted on a web server.
 
 ## Map Creator
+### Adding existing files
+Files of the GPX, GeoJSON, IGC, KML,TopoJSON formats can be loaded to the base layer by dragging and dropping the file on the map. 
+Select 'base layer' in the pop up when adding these files. Only icon and label layers made with the map creator should be added
+using the other options.
+
+### Features, Labels, and Icons
+Features can be drawn be clicking 'Draw feature' and selecting a geometry type from the drop-down. Drawing a line is completed by
+double clicking. Any of these features can be modified by clicking 'Select and Modify Feature' on the side bar. Click on the desired
+feature and drag it to its new location. This also works with labels and icons, which act as 'Point' geometry.
+
+The 'Pop-up text' in feature creation and editting refers to the pop-up that appears in the web map template when a feature is clicked. 
+
+When exporting, the layers should be saved to the same directory as the web map template if it is being used.
+
+### Limitations
+When saving a .png file, the black and white background maps may not appear to be visible. This depends on the background colour
+of the app being used to view the pictures
+
+## Web Map template
+### Using template
+The template is created to work with the base, label, and icon layers exported by the Map creator, which will be saved in the same 
+directory as webMap.js and webMap.css.
+
+To use the the template, the .html page must inlcude all of the required script and link tags
+```
+<link rel="stylesheet" href="https://openlayers.org/en/v4.4.2/css/ol.css" type="text/css">
+	    <script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=requestAnimationFrame,Element.prototype.classList,URL"></script>
+	    <script src="https://openlayers.org/en/v4.4.2/build/ol.js"></script>
+	    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/1.3.3/FileSaver.min.js"></script>
+	    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" type="text/css">
+	    <script src="https://cdn.rawgit.com/walkermatt/ol3-layerswitcher/6e4cc8c9/src/ol3-layerswitcher.js"></script>
+	    <link rel="stylesheet" href="https://cdn.rawgit.com/walkermatt/ol3-layerswitcher/6e4cc8c9/src/ol3-layerswitcher.css" type="text/css">
+		<link rel="stylesheet" type="text/css" href="webMap.css">
+```
+
 
 ### Adding Geojson file
 To change the Geojson file being pulled from, the url option of the locations variable must be changed to match the file name.
@@ -25,8 +62,8 @@ var locations = new ol.layer.Vector({
  ```
  
  ### Changing map tile source
- To change the tiles that are used for the map background, the source option within the map variable must be changed to match the proper url
- from the tile host server.
+ To change the tiles that are used for the map background, the source option within the map variable must be changed to match the proper 
+ url from the tile host server.
  
  The AWMC Base map tiles are selected as follows:
 ```javascript
