@@ -1,11 +1,14 @@
-# Itinerary Maps
+# Map Creator and web map template
 
-An embeddable map that uses Openlayers and javascript to plot the itineraries of heroes in Greek Myth.
+The Map Creator web app be used to create maps using the AWMC background tiles. The maps can be made from scratch or geographic data from from various file formats can be added and modified. The layers from the maps created can be saved and used with the web map 
+template so the maps can be used in a web page.
 
 ## Getting Started 
 
-The .html and .geojson files should be hosted in the same directory of a web server. If a web server is not used, web browser security measures 
-will prevent the .geojson file from being opened due to being form a different domain.
+
+# Itinerary Maps
+
+An embeddable map that uses Openlayers and javascript to plot the itineraries of heroes in Greek Myth.
 
 ### Adding Geojson file
 To change the Geojson file being pulled from, the url option of the locations variable must be changed to match the file name.
@@ -23,36 +26,52 @@ var locations = new ol.layer.Vector({
  
  The AWMC Base map tiles are selected as follows:
 ```javascript
- var map = new ol.Map({
-    	layers: [
-    		new ol.layer.Tile({
-        		 source: new ol.source.XYZ({
-              urls:
-              [
-                "http://a.tiles.mapbox.com/v3/isawnyu.map-knmctlkh/{z}/{x}/{y}.png",
-                "http://b.tiles.mapbox.com/v3/isawnyu.map-knmctlkh/{z}/{x}/{y}.png",
-                "http://c.tiles.mapbox.com/v3/isawnyu.map-knmctlkh/{z}/{x}/{y}.png",
-                "http://d.tiles.mapbox.com/v3/isawnyu.map-knmctlkh/{z}/{x}/{y}.png"
-              ],
-              crossOrigin: 'anonymous'
-            })
+      var map = new ol.Map({
+       layers: [
+       new ol.layer.Tile({
+        source: new ol.source.XYZ({
+          urls:
+          [
+          "http://a.tiles.mapbox.com/v3/isawnyu.map-knmctlkh/{z}/{x}/{y}.png",
+          "http://b.tiles.mapbox.com/v3/isawnyu.map-knmctlkh/{z}/{x}/{y}.png",
+          "http://c.tiles.mapbox.com/v3/isawnyu.map-knmctlkh/{z}/{x}/{y}.png",
+          "http://d.tiles.mapbox.com/v3/isawnyu.map-knmctlkh/{z}/{x}/{y}.png"
+          ],
+          crossOrigin: 'anonymous',
+          attributions: [
+          new ol.Attribution({
+            html: "Tiles &copy;" + "<a href='http://mapbox.com/'>MapBox</a>" +
+            "Tiles and Data &copy 2017 <a href='http://www.awmc.unc.edu'>AWMC</a>" +
+            " <a href='https://creativecommons.org/licenses/by/4.0/'>CC-BY-NC 4.0</a>"
+          }),
+          ],
+        })
+      }),
   ``` 
   
-   Thw AMWC Coastal outline map is used by changing the urls as follows:
+   The AMWC Coastal outline map is used by changing the urls as follows:
 ```javascript
-     var map = new ol.Map({
-    	layers: [
-    		new ol.layer.Tile({
-        		 source: new ol.source.XYZ({
-              urls:
-              [
-                "http://a.tiles.mapbox.com/v3/isawnyu.eoupu8fr/{z}/{x}/{y}.png",
-                "http://b.tiles.mapbox.com/v3/isawnyu.eoupu8fr/{z}/{x}/{y}.png",
-                "http://c.tiles.mapbox.com/v3/isawnyu.eoupu8fr/{z}/{x}/{y}.png",
-                "http://d.tiles.mapbox.com/v3/isawnyu.eoupu8fr/{z}/{x}/{y}.png"
-              ],
-              crossOrigin: 'anonymous'
-            })
+      var map = new ol.Map({
+       layers: [
+       new ol.layer.Tile({
+        source: new ol.source.XYZ({
+          urls:
+          [
+          "http://a.tiles.mapbox.com/v3/isawnyu.eoupu8fr/{z}/{x}/{y}.png",
+          "http://b.tiles.mapbox.com/v3/isawnyu.eoupu8fr/{z}/{x}/{y}.png",
+          "http://c.tiles.mapbox.com/v3/isawnyu.eoupu8fr/{z}/{x}/{y}.png",
+          "http://d.tiles.mapbox.com/v3/isawnyu.eoupu8fr/{z}/{x}/{y}.png"
+          ],
+          crossOrigin: 'anonymous',
+          attributions: [
+          new ol.Attribution({
+            html: "Tiles &copy;" + "<a href='http://mapbox.com/'>MapBox</a>" +
+            "Tiles and Data &copy 2017 <a href='http://www.awmc.unc.edu'>AWMC</a>" +
+            " <a href='https://creativecommons.org/licenses/by/4.0/'>CC-BY-NC 4.0</a>"
+          }),
+          ],
+        })
+      }),
 ```
    The standard OSM tiles can be used as follows:
 ```javascript
